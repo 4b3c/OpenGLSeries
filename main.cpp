@@ -1,62 +1,101 @@
 #include <iostream>
-#include <fstream>
-#include <unordered_map>
+#include <bitset>
 using namespace std;
 
-string words[110];
-int word_count[110];
+string board[5] = {
+	"   |   |   ",
+	"---|---|---",
+	"   |   |   ",
+	"---|---|---",
+	"   |   |   "
+};
 
-void bubblesort(string words1[], int word_count1[], int arr_len) {
-	bool changed = true;
-	cout << "Starting sort.\n";
-	while (changed == true) {
-		changed = false;
-		for (int i = 0; i < arr_len - 1; i++) {
-			if (word_count1[i] > word_count1[i + 1]) {
-				swap(word_count1[i], word_count1[i + 1]);
-				swap(words1[i], words1[i + 1]);
-				changed = true;
-			} else {
-			}
-		} 
+void print_arr(int array[], int length) {
+	cout << "{";
+	for (int i = 0; i < length; i++) {
+		cout << array[i];
+		if (i != length - 1) {
+			cout << ", ";
+		}
 	}
-	cout << "Done sorting.\n";
+	cout << "}\n";
 }
 
-int main() {
-	unordered_map<string, int> word_freq;
 
-	fstream file;
-	string str_line;
-	int lasti = 0;
+void print_board(string current_board[], int num_rows) {
+	for (int i = 0; i < num_rows; i++) {
+		cout << current_board[i] << endl;
+	}
+}
 
-	file.open("words.txt");
-	getline(file, str_line);
-	file.close();
+int check_win(int played[]) {
+	int wins[] = {
+		0b111000000, 0b000111000, 0b000000111,
+		0b100100100, 0b010010010, 0b001001001,
+		0b100010001, 0b001010100
+	};
 
-	for (int i = 0; i < str_line.length(); i++) {
-		if (str_line[i] == ' ' || str_line[i] == '.' || str_line[i] == ',') {
-			word_freq[str_line.substr(lasti, i - lasti)] += 1;
-			lasti = i + 1;
+	int bit_mask = 0;
+	int player1 = 0;
+	int player2 = 0;
+
+	for (int i = 0; i < 9; i++) {
+		if (played[i] == 1) {
+			bit_mask = 256 >> i;
+			player1 |= bit_mask;
+		} else if (played[i] == 2) {
+			bit_mask = 256 >> i;
+			player2 |= bit_mask;
 		}
 	}
 
-	string words[word_freq.size()];
-	int word_count[word_freq.size()];
-	int i = 0;
-
-	for (auto const& [key, value] : word_freq) {
-		words[i] = key;
-		word_count[i] = value;
-		i++;
+	for (int i = 0; i < 8; i++) {
+		if ((player1 & wins[i]) == wins[i]) {
+			return 1;
+		} else if ((player2 & wins[i]) == wins[i]) {
+			return 2;
+		}
 	}
 
-	bubblesort(words, word_count, sizeof(word_count) / sizeof(word_count[0]));
+	return 0;
+}
 
-	for (int i = 0; i < sizeof(word_count) / sizeof(word_count[0]); i++) {
-		cout << words[i] << ": " << word_count[i] << endl;
+int main() {
+	int move;
+	int move_count = 0;
+	int player = 0;
+	int winner = 0;
+	int spots[] = {0, 0, 0, 0, 0, 0, 0, 0, 0};
+	char tokens[] = {'x', 'o'};
+
+
+	while (1 == 1) {
+	print_board(board, 5);
+
+		while (1 == 1) {
+			cout << "Enter a number 1-9 for " << tokens[player] <<"'s position: ";
+			cin >> move;
+			if (move > 0 && move < 10 && spots[move - 1] == 0) {
+				break;
+			} else {
+				cout << "The chosen number isn't valid or is taken.\n";
+			}
+		}
+
+		board[((move - 1) / 3) * 2][static_cast<int>(((move + 2) % 3) * 4) + 1] = tokens[player];
+		spots[move - 1] = 1 + player;
+		player = (player * -1) + 1;
+		move_count += 1;
+		if (move_count > 4) {
+			winner = check_win(spots);
+			if (winner != 0) {
+				cout << "\nLooks like player " << tokens[winner - 1] << " wins!! Congrats!\n";
+				cout << "Game over!\n";
+				break;
+			}
+		}
+
 	}
-
-
+	
 	return 0;
 }
