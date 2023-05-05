@@ -1,23 +1,33 @@
 #include <iostream>
-#include <cstdlib>
-#include <ctime>
+#include <fstream>
 using namespace std;
 
 int main() {
-	srand(time(0));
-	int num = rand() % 100;
-	int guessed = 101;
-	while (num != guessed) {
-		cout << "Guess the random number: ";
-		cin >> guessed;
+	fstream file;
+	string str_line;
+	double line;
+	int max = 0;
+	int min = 100;
+	int count = 0;
+	double tot = 0;
 
-		if (num > guessed) {
-			cout << "You guessed too low..." << endl;
-		} else if (num < guessed) {
-			cout << "You guessed too high..." << endl;
+	file.open("numbers.txt");
+
+	while(getline(file, str_line)) {
+		line = stoi(str_line);
+		if (line > max) {
+			max = line;
 		}
-
+		if (line < min) {
+			min = line;
+		}
+		tot += line;
+		count += 1;
 	}
-	cout << "Congratulations, you got it. It was " << num << ".\n";
+
+	cout << "Maximum value: " << max << endl;
+	cout << "Minimum value: " << min << endl;
+	cout << "Average value: " << tot / count << endl;
+
 	return 0;
 }
