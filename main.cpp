@@ -3,6 +3,26 @@
 #include <unordered_map>
 using namespace std;
 
+string words[110];
+int word_count[110];
+
+void bubblesort(string words1[], int word_count1[], int arr_len) {
+	bool changed = true;
+	cout << "Starting sort.\n";
+	while (changed == true) {
+		changed = false;
+		for (int i = 0; i < arr_len - 1; i++) {
+			if (word_count1[i] > word_count1[i + 1]) {
+				swap(word_count1[i], word_count1[i + 1]);
+				swap(words1[i], words1[i + 1]);
+				changed = true;
+			} else {
+			}
+		} 
+	}
+	cout << "Done sorting.\n";
+}
+
 int main() {
 	unordered_map<string, int> word_freq;
 
@@ -21,9 +41,22 @@ int main() {
 		}
 	}
 
+	string words[word_freq.size()];
+	int word_count[word_freq.size()];
+	int i = 0;
+
 	for (auto const& [key, value] : word_freq) {
-		cout << key << ": " << value << endl;
+		words[i] = key;
+		word_count[i] = value;
+		i++;
 	}
+
+	bubblesort(words, word_count, sizeof(word_count) / sizeof(word_count[0]));
+
+	for (int i = 0; i < sizeof(word_count) / sizeof(word_count[0]); i++) {
+		cout << words[i] << ": " << word_count[i] << endl;
+	}
+
 
 	return 0;
 }
