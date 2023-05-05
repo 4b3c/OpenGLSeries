@@ -1,12 +1,17 @@
 #include <iostream>
-#include <sstream>
+#include <cmath>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main() {
-	double f_temp;
-	cout << "Temperature in Fahrenheit: ";
-	cin >> f_temp;
-	cout << "Celsius: " << (f_temp - 32) * (5.0 / 9.0) << "\n";
-	
+	int number;
+	cout << "Give me a number: ";
+	cin >> number;
+	if ((number % 2) == 0) {
+		cout << "Even!";
+	} else {
+		cout << "Odd!";
+	}
 	return 0;
 }
