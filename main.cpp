@@ -2,32 +2,26 @@
 #include <fstream>
 using namespace std;
 
-int main() {
-	fstream file;
-	string str_line;
-	double line;
-	int max = 0;
-	int min = 100;
-	int count = 0;
-	double tot = 0;
-
-	file.open("numbers.txt");
-
-	while(getline(file, str_line)) {
-		line = stoi(str_line);
-		if (line > max) {
-			max = line;
+bool palindrome(string word) {
+	for (int i = 0; i < word.length() / 2; i++) {
+		if (word[i] != word[word.length() - i - 1]) {
+			cout << word[i] << " isn't " << word[word.length() - i - 1] << endl;
+			return false;
 		}
-		if (line < min) {
-			min = line;
-		}
-		tot += line;
-		count += 1;
 	}
+	return true;
+}
 
-	cout << "Maximum value: " << max << endl;
-	cout << "Minimum value: " << min << endl;
-	cout << "Average value: " << tot / count << endl;
+int main() {
+	string word;
+	cout << "Enter a word: ";
+	cin >> word;
+
+	if (palindrome(word)) {
+		cout << "The word '" << word << "' is a palindrome!" << endl;
+	} else {
+		cout << "The word '" << word << "' isn't a palindrome." << endl;
+	}
 
 	return 0;
 }
