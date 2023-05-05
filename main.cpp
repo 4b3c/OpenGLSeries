@@ -2,26 +2,22 @@
 #include <fstream>
 using namespace std;
 
-bool palindrome(string word) {
-	for (int i = 0; i < word.length() / 2; i++) {
-		if (word[i] != word[word.length() - i - 1]) {
-			cout << word[i] << " isn't " << word[word.length() - i - 1] << endl;
-			return false;
-		}
+int binary_search(int arr[], int target, int low, int high) {
+	int middle = (high + low) / 2; 
+	if (arr[middle] == target) {
+		return middle;
+	} else if (arr[middle] > target) {
+		return binary_search(arr, target, low, middle);
+	} else {
+		return binary_search(arr, target, middle, high);
 	}
-	return true;
 }
 
 int main() {
-	string word;
-	cout << "Enter a word: ";
-	cin >> word;
+	int target = 6;
+	int array[] = {1, 4, 6, 7, 8, 10, 13, 15, 16, 17, 20, 22, 25, 26, 29, 32, 33, 34, 35, 53, 64};
 
-	if (palindrome(word)) {
-		cout << "The word '" << word << "' is a palindrome!" << endl;
-	} else {
-		cout << "The word '" << word << "' isn't a palindrome." << endl;
-	}
+	cout << binary_search(array, target, 0, (sizeof(array) / sizeof(array[0]))) << endl;
 
 	return 0;
 }
