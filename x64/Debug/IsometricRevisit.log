@@ -5,10 +5,22 @@ C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(46,8): warnin
 C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(46,8): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
 C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(47,8): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
 C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(47,8): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(65,10): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(65,10): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(66,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(66,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(67,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
-C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(67,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(48,10): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(48,10): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(49,8): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(49,8): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(50,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(50,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(74,10): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(74,10): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(75,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(75,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(76,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(76,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(77,11): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(77,11): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(78,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(78,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(79,10): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(79,10): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   IsometricRevisit.vcxproj -> C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\x64\Debug\IsometricRevisit.exe

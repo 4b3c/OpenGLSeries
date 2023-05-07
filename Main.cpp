@@ -4,7 +4,7 @@
 #include <GLFW/glfw3.h>
 #include "Libraries/utilities/shader.h"
 
-
+using namespace std;
 
 // main function what can i say
 int main() {
@@ -16,7 +16,7 @@ int main() {
 	specifyVersion();
 
 	// create a GLFWwindow object named window passing in the size in pixels and the name
-	GLFWwindow* window = glfwCreateWindow(800, 500, "Isometric Revisit", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(800, 800, "Isometric Revisit", NULL, NULL);
 
 	// incase the window is not created, print to the console and terminate the program
 	if (window == NULL) {
@@ -32,7 +32,7 @@ int main() {
 	gladLoadGL();
 
 	// create like a virtual window
-	glViewport(0, 0, 800, 500);
+	glViewport(0, 0, 800, 800);
 
 	GLuint shaderProgram = createShaderProgram();
 
@@ -42,16 +42,25 @@ int main() {
 
 	// specify the x, y and z coordinates of the vertices of the triangle (goes from -1 to 1 in bot x and y)
 	GLfloat vertices[] = {
-		-0.4f + x_pos, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.4f + x_pos, -0.5f * float(sqrt(3)) / 3, 0.0f,
-		0.0f + x_pos, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
+		-0.5f + x_pos, -0.5f, 0.0f,
+		0.5f + x_pos, -0.5f, 0.0f,
+		0.0f + x_pos, 0.5f, 0.0f,
+		-0.25f + x_pos, 0.0f, 0.0f,
+		0.0f + x_pos, -0.5f, 0.0f,
+		0.25f + x_pos, 0.0f, 0.0f
+	};
+
+	GLuint indices[]{
+		0, 4, 3,
+		4, 1, 5,
+		3, 5, 2
 	};
 
 	// "reference containers" VAO for vertex array state, VBO for vertex buffer state
-	GLuint VAO, VBO;
-
-	std::tie(VAO, VBO) = setupVertexArray(vertices);
-
+	std::tuple<GLuint, GLuint, GLuint> vaoTuple = setupVertexArray(vertices, sizeof(vertices), indices, sizeof(indices));
+	GLuint VAO = std::get<0>(vaoTuple);
+	GLuint VBO = std::get<1>(vaoTuple);
+	GLuint EBO = std::get<2>(vaoTuple);
 
 	// while loop so the window doesn't immediately close (stays open till 'X' is clicked)
 	while (!glfwWindowShouldClose(window)) {
@@ -62,9 +71,12 @@ int main() {
 
 		// specify the x, y and z coordinates of the vertices of the triangle (goes from -1 to 1 in bot x and y)
 		GLfloat vertices[] = {
-			-0.4f + x_pos, -0.5f * float(sqrt(3)) / 3, 0.0f,
-			0.4f + x_pos, -0.5f * float(sqrt(3)) / 3, 0.0f,
-			0.0f + x_pos, 0.5f * float(sqrt(3)) * 2 / 3, 0.0f
+			-0.5f + x_pos, -0.5f, 0.0f,
+			0.5f + x_pos, -0.5f, 0.0f,
+			0.0f + x_pos, 0.5f, 0.0f,
+			-0.25f + x_pos, 0.0f, 0.0f,
+			0.0f + x_pos, -0.5f, 0.0f,
+			0.25f + x_pos, 0.0f, 0.0f
 		};
 
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
@@ -86,7 +98,7 @@ int main() {
 		// using the shader program, draw the triangle
 		glUseProgram(shaderProgram);
 		glBindVertexArray(VAO);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawElements(GL_TRIANGLES, 9, GL_UNSIGNED_INT, 0);
 
 		// bring the next frame into frame essentially
 		glfwSwapBuffers(window);
@@ -98,12 +110,12 @@ int main() {
 	// Delete all the objects we created and don't need anymore
 	glDeleteVertexArrays(1, &VAO);
 	glDeleteBuffers(1, &VBO);
+	glDeleteBuffers(1, &EBO);
 	glDeleteProgram(shaderProgram);
 
 	// close the window and terminate the library using
 	glfwDestroyWindow(window);
 	glfwTerminate();
-
 
 	// classic C++
 	return 0;
