@@ -31,4 +31,7 @@
 *.out
 *.app
 
+# Lame ahh visual studio stuff
+*.suo
+
 Browse.VC.opendb
