@@ -1,2 +1,14 @@
 ﻿  Main.cpp
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(45,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(45,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(46,8): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(46,8): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(47,8): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(47,8): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(65,10): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(65,10): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(66,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(66,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(67,9): warning C4838: conversion from 'double' to 'GLfloat' requires a narrowing conversion
+C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\Main.cpp(67,9): warning C4244: 'initializing': conversion from 'double' to 'GLfloat', possible loss of data
   IsometricRevisit.vcxproj -> C:\Users\Abram P\Desktop\Programming\C++\IsometricRevisit\x64\Debug\IsometricRevisit.exe
