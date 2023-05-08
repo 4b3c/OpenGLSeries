@@ -16,6 +16,12 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{139f2e0d-ee2c-4c85-8b48-5db2db2028ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BufferStuff">
+      <UniqueIdentifier>{bde47c87-f525-4a2f-9c8d-59be57b6c3e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Isometric">
+      <UniqueIdentifier>{44f1a3fa-c677-4663-a891-9a05e27274ce}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="glad.c">
@@ -27,10 +33,22 @@
     <ClCompile Include="Libraries\utilities\shader.cpp">
       <Filter>Shaders</Filter>
     </ClCompile>
+    <ClCompile Include="buffers.cpp">
+      <Filter>BufferStuff</Filter>
+    </ClCompile>
+    <ClCompile Include="drawing.cpp">
+      <Filter>Isometric</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Libraries\utilities\shader.h">
       <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="buffers.h">
+      <Filter>BufferStuff</Filter>
+    </ClInclude>
+    <ClInclude Include="drawing.h">
+      <Filter>Isometric</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

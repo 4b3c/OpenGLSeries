@@ -1,8 +1,5 @@
 #include "shader.h"
 #include <cstddef>
-#include <tuple>
-
-using namespace std;
 
 // apparantly this is the vertex shader (takes in x, y, z it looks like)
 const char* vertexShaderSource = "#version 330 core\n"
@@ -48,37 +45,4 @@ GLuint createShaderProgram() {
 	glDeleteShader(fragmentShader);
 
 	return shaderProgram;
-}
-
-tuple<GLuint, GLuint, GLuint> setupVertexArray(float* vertices, int verSize, GLuint* indices, int indSize) {
-	// "reference containers" VAO for vertex array state, VBO for vertex buffer state
-	GLuint VAO, VBO, EBO;
-
-	// generate and bind the VAO
-	glGenVertexArrays(1, &VAO);
-	glBindVertexArray(VAO);
-
-	// generate and bind the VBO
-	glGenBuffers(1, &VBO);
-	glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-	// generate and bind the EBO
-	glGenBuffers(1, &EBO);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
-
-	// copy all the vertices data to the buffer
-	glBufferData(GL_ARRAY_BUFFER, verSize, vertices, GL_STATIC_DRAW);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, indSize, indices, GL_STATIC_DRAW);
-
-	// tell openGL how to interpret the vertex data
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-	glEnableVertexAttribArray(0);
-
-	// bind them to zero so we don't accidentally modify them apparantly
-	glBindBuffer(GL_ARRAY_BUFFER, 0);
-	glBindVertexArray(0);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
-
-	// return VAO, VBO, and EBO
-	return make_tuple(VAO, VBO, EBO);
 }
