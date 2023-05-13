@@ -8,11 +8,9 @@
 #include "Renderer.h"
 #include "VertexBuffer.h"
 #include "IndexBuffer.h"
-
+#include "VertexArray.h"
 
 using namespace std;
-
-
 
 
 struct shaderProgramSource {
@@ -147,9 +145,6 @@ int main(void)
 		};
 
 
-
-
-
 		unsigned int vao;
 		GLCall(glGenVertexArrays(1, &vao));
 		GLCall(glBindVertexArray(vao));
@@ -157,17 +152,12 @@ int main(void)
 
 
 
+		VertexArray va;
+		VertexBuffer vb(positions, 4 * 2 * sizeof(float));
 
-
-
-
-
-
-
-		VertexBuffer vb(positions, 4 * 3 * sizeof(float));
-
-		GLCall(glEnableVertexAttribArray(0));
-		GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));
+		VertexBufferLayout layout;
+		layout.Push(GL_FLOAT, 2);
+		va.AddBuffer(vb, layout);
 
 		IndexBuffer ib(indices, 6);
 
@@ -182,10 +172,14 @@ int main(void)
 
 
 
+
+
 		GLCall(glBindVertexArray(0));
 		GLCall(glUseProgram(0));
 		GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
 		GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
+
+
 
 
 
@@ -208,7 +202,7 @@ int main(void)
 			GLCall(glUseProgram(shader));
 			GLCall(glUniform4f(location, red, 0.5f, 0.0f, 1.0f));
 
-			GLCall(glBindVertexArray(vao));
+			va.Bind();
 			ib.Bind();
 
 			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
@@ -219,11 +213,6 @@ int main(void)
 			/* Poll for and process events */
 			glfwPollEvents();
 		}
-
-
-
-
-
 
 		glDeleteProgram(shader);
 	}
