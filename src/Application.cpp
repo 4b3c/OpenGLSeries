@@ -3,6 +3,7 @@
 
 #include "Renderer.h"
 #include "VertexBuffer.h"
+#include "VertexBufferLayout.h"
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Shader.h"
@@ -81,7 +82,7 @@ int main(void)
 		ib.Unbind();
 
 
-
+		Renderer renderer;
 
 
 		float red = 0.0f;
@@ -89,7 +90,7 @@ int main(void)
 
 		while (!glfwWindowShouldClose(window))
 		{
-			GLCall(glClear(GL_COLOR_BUFFER_BIT));
+			renderer.Clear();
 
 			if (red > 1.0f || red < 0.0f)
 				increment = -increment;
@@ -98,10 +99,8 @@ int main(void)
 
 			shader.Bind();
 			shader.SetUniform4f("u_Color", red , 0.5f, 0.0f, 1.0f);
-			va.Bind();
-			ib.Bind();
-
-			GLCall(glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr));
+			
+			renderer.Draw(va, ib, shader);
 
 			glfwSwapBuffers(window);
 			glfwPollEvents();
