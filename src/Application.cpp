@@ -7,6 +7,7 @@
 #include "IndexBuffer.h"
 #include "VertexArray.h"
 #include "Shader.h"
+#include "Texture.h"
 
 using namespace std;
 
@@ -43,17 +44,21 @@ int main(void)
 	cout << glGetString(GL_VERSION) << endl;
 
 	{
-		float positions[8] = {
-			 0.0f,  0.2f,
-			 0.4f,  0.0f,
-			 0.0f, -0.2f,
-			-0.4f,  0.0f
+		float positions[] = {
+			-0.5f, -0.5f, 0.0f, 0.0f,
+			 0.5f, -0.5f, 1.0f, 0.0f,
+			 0.5f,  0.5f, 1.0f, 1.0f,
+			-0.5f,  0.5f, 0.0f, 1.0f
 		};
 
 		unsigned int indices[] = {
 			0, 1, 2,
 			2, 3, 0
 		};
+
+		GLCall(glEnable(GL_BLEND));
+		GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+		
 
 
 		unsigned int vao;
@@ -64,9 +69,10 @@ int main(void)
 
 
 		VertexArray va;
-		VertexBuffer vb(positions, 4 * 2 * sizeof(float));
+		VertexBuffer vb(positions, 4 * 4 * sizeof(float));
 
 		VertexBufferLayout layout;
+		layout.Push(GL_FLOAT, 2);
 		layout.Push(GL_FLOAT, 2);
 		va.AddBuffer(vb, layout);
 
@@ -75,6 +81,10 @@ int main(void)
 		Shader shader("res/shaders/basic.shader");
 		shader.Bind();
 		shader.SetUniform4f("u_Color", 0.7f, 0.5f, 0.0f, 1.0f);
+
+		Texture texture("res/textures/grass1.png");
+		texture.Bind();
+		shader.SetUniform1i("u_Texture", 0);
 
 		va.Unbind();
 		shader.Unbind();
